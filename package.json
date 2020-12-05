@@ -1,0 +1,24 @@
+{
+  "name": "adventofcode2020",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cheemcheem/adventofcode2020.git"
+  },
+  "keywords": [
+    "adventofcode",
+    "2020",
+    "fun"
+  ],
+  "author": "Kathan Cheema",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cheemcheem/adventofcode2020/issues"
+  },
+  "homepage": "https://github.com/cheemcheem/adventofcode2020#readme"
+}
