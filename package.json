@@ -13,6 +13,7 @@
     "day-03": "cd src && ts-node day-03.ts",
     "day-04": "cd src && ts-node day-04.ts",
     "day-05": "cd src && ts-node day-05.ts",
+    "day-06": "cd src && ts-node day-06.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
