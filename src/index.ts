@@ -27,7 +27,14 @@ class Index {
             optional: true,
             describe: 'Run latest day.',
             conflicts: 'day',
-            alias: 'l'
+            alias: 'l',
+          },
+          example: {
+            type: 'number',
+            optional: true,
+            describe: 'Run example 1 or example 2 for the given day.',
+            alias: 'e',
+            choices: [1, 2],
           }
         })
         .version(false)
@@ -44,13 +51,22 @@ class Index {
             throw new Error("Can't provide empty part option.")
           }
 
+          if (Object.keys(argv).includes("example") && !argv.example) {
+            throw new Error("Can't provide empty example.")
+          }
+
           return true;
 
         })
         .help()
         .usage('$0 run')
+        .usage('$0 run -e [example]')
         .usage('$0 run -d [day]')
+        .usage('$0 run -d [day] -e [example]')
         .usage('$0 run -d [day] -p [part]')
+        .usage('$0 run -d [day] -p [part] -e [example]')
+        .usage('$0 run -l')
+        .usage('$0 run -l -e [example]')
         .showHelpOnFail(true, "This can't be run with these options.")
         .parse()
     ;
@@ -58,20 +74,20 @@ class Index {
     if (!result) return;
 
     const part = result.part as 1 | 2 | undefined;
+    const example = result.example as 1 | 2 | undefined;
 
-
-    result.latest ? this.runOne(Index.DAYS.length, part)
-        : result.day ? this.runOne(result.day, part)
-        : this.runAll()
+    result.latest ? this.runOne(Index.DAYS.length, part, example)
+        : result.day ? this.runOne(result.day, part, example)
+        : this.runAll(example)
     ;
 
   }
 
-  async runAll() {
+  async runAll(example?: 1 | 2) {
     const puzzles = await Promise.all(
         Index.DAYS
         .map(async a => await new a() as Day)
-        .map(async a => (await a).init())
+        .map(async a => (await a).init(example))
     );
 
     const solutions = await Promise.all(
@@ -89,12 +105,12 @@ class Index {
     );
   }
 
-  async runOne(dayNumber: number, part?: 1 | 2) {
+  async runOne(dayNumber: number, part?: 1 | 2, example?: 1 | 2) {
     if (dayNumber > Index.DAYS.length) {
       throw ERROR_MESSAGE;
     }
 
-    const day = await new Index.DAYS[dayNumber - 1]().init();
+    const day = await new Index.DAYS[dayNumber - 1]().init(example);
 
     console.log({
       day: dayNumber,

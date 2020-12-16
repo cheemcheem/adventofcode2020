@@ -9,12 +9,14 @@ export abstract class Day {
     this.dayNumber = day;
   }
 
-  async init() {
+  async init(example?: 1 | 2) {
     const path = await import("path");
     const {promises} = await import("fs");
     const {readFile} = promises;
     this.fileString = (await readFile(path.join(__dirname, `../inputs/day-${
         new NumberFormat(undefined, {minimumIntegerDigits: 2}).format(this.dayNumber)
+    }${
+        example ? "-example-" + example : ""
     }.txt`))).toString();
     return this;
   }
