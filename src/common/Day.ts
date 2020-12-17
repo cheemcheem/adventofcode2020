@@ -3,11 +3,7 @@ import NumberFormat = Intl.NumberFormat;
 
 export abstract class Day {
   protected fileString?: string;
-  private readonly dayNumber: number;
-
-  protected constructor(day: number) {
-    this.dayNumber = day;
-  }
+  protected abstract readonly dayNumber: number;
 
   async init(example?: 1 | 2) {
     const path = await import("path");

@@ -2,9 +2,7 @@ import {Day} from "../common";
 
 export default class Day5 extends Day {
 
-  constructor() {
-    super(5);
-  }
+  protected readonly dayNumber = 5;
 
   part1 = async () => {
     const seats = this.getSplitString();

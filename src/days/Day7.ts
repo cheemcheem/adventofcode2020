@@ -4,9 +4,8 @@ export default class Day7 extends Day {
 
   private readonly bagMap = new Map<string, { colour: string, count: number }[]>();
 
-  constructor() {
-    super(7);
-  }
+  protected readonly dayNumber = 7;
+
 
   loadBagMap = async () => {
     const splitString = this.getSplitString();

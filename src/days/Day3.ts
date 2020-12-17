@@ -31,9 +31,7 @@ class TreeMap {
 
 export default class Day3 extends Day {
 
-  constructor() {
-    super(3);
-  }
+  protected readonly dayNumber = 3;
 
   part1 = async () => {
     const map = new TreeMap(this.getString());

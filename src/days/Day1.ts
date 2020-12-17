@@ -2,9 +2,7 @@ import {Day, ERROR_MESSAGE} from "../common";
 
 export default class Day1 extends Day {
 
-  constructor() {
-    super(1);
-  }
+  protected readonly dayNumber = 1;
 
   part1 = async () => {
     const expenses = this.getSplitString().map(Number);
