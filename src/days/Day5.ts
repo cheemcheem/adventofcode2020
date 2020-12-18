@@ -1,4 +1,4 @@
-import {Day} from "../common";
+import {Day, ERROR_MESSAGE} from "../common";
 
 export default class Day5 extends Day {
 
@@ -6,7 +6,7 @@ export default class Day5 extends Day {
 
   part1 = async () => {
     const seats = this.getSplitString();
-    const solution = seats.map(seat => ({
+    const {id} = seats.map(seat => ({
       row: Number.parseInt(
           seat.substring(0, 7)
           .replaceAll("F", "0")
@@ -23,7 +23,7 @@ export default class Day5 extends Day {
     .map(({row, col}) => ({row, col, id: (row * 8) + col}))
     .reduce((a, b) => a.id > b.id ? a : b);
 
-    return {part: 1, solution};
+    return id;
   }
 
   part2 = async () => {
@@ -51,10 +51,10 @@ export default class Day5 extends Day {
     for (let id = minId + 1; id < maxId - 1; id++) {
       const idIndex = orderedIds.indexOf(id);
       if (idIndex === -1) {
-        return {part: 2, solution: id};
+        return id;
       }
     }
 
-    return {part: 2, solution: "404 advent of code broken"};
+    throw ERROR_MESSAGE;
   }
 }

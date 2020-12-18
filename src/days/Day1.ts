@@ -11,7 +11,7 @@ export default class Day1 extends Day {
       for (const j of expenses) {
         if (i === j) continue;
         if (i + j === 2020) {
-          return {part: 1, i, j, multiply: i * j};
+          return i * j;
         }
       }
     }
@@ -28,7 +28,7 @@ export default class Day1 extends Day {
         for (const k of expenses) {
           if (j === k) continue;
           if (i + j + k === 2020) {
-            return {part: 2, i, j, k, multiply: i * j * k};
+            return i * j * k;
           }
         }
       }

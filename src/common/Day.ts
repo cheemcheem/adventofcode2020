@@ -17,9 +17,9 @@ export abstract class Day {
     return this;
   }
 
-  abstract part1(): Promise<any>
+  abstract part1(): Promise<number>
 
-  abstract part2(): Promise<any>
+  abstract part2(): Promise<number>
 
   protected getString() {
     if (this.fileString) return this.fileString;

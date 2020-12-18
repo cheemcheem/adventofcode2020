@@ -7,7 +7,7 @@ export default class Day4 extends Day {
   part1 = async () => {
     const passports = this.getDoubleSplitString();
     const required = ['byr', 'iyr', 'eyr', 'hgt', 'hcl', 'ecl', 'pid'];
-    const converted = passports
+    return passports
     .map(passport => passport
         .split(/([\n ])/)
         .filter(detail => detail !== '\n' && detail !== ' ')
@@ -24,9 +24,7 @@ export default class Day4 extends Day {
     .filter(passport => {
       const properties = Object.getOwnPropertyNames(passport);
       return required.every(property => properties.includes(property));
-    })
-        .length
-    return {part: 1, converted};
+    }).length;
   }
 
 
@@ -45,7 +43,8 @@ export default class Day4 extends Day {
       cid?: string
     }
 
-    const converted = passports
+
+    return passports
     .map(passport => passport
         .split(/([\n ])/)
         .filter(detail => detail !== '\n' && detail !== ' ')
@@ -109,8 +108,6 @@ export default class Day4 extends Day {
 
       return pid.match(/^\d{9}$/) !== null;
 
-
-    }).length
-    return {part: 2, converted, total: passports.length};
+    }).length;
   }
 }

@@ -23,7 +23,7 @@ export default class Day8 extends Day {
 
   part1 = async () => {
     await this.loadVisited();
-    return {part: 1, answer: this.getFinalAccBeforeLoop()};
+    return this.getFinalAccBeforeLoop();
   }
 
   private getFinalAccBeforeLoop() {
@@ -86,7 +86,7 @@ export default class Day8 extends Day {
       answer = (await this.getFinalAccBeforeLoop());
 
     }
-    return {part: 2, answer};
+    return answer;
   }
 
 }

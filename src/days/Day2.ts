@@ -7,7 +7,7 @@ export default class Day2 extends Day {
   part1 = async () => {
     const fileRows = this.getSplitString();
 
-    let count = fileRows.map(row => {
+    return fileRows.map(row => {
       const split = row.split(": ");
       return {rule: split[0], password: split[1]};
     })
@@ -27,17 +27,14 @@ export default class Day2 extends Day {
         }
       }
       return letterCount >= min && letterCount <= max;
-    })
-        .length;
-    return {part: 1, count, total: fileRows.length};
+    }).length;
   }
 
 
   part2 = async () => {
     const fileRows = this.getSplitString();
 
-
-    let count = fileRows.map(row => {
+    return fileRows.map(row => {
       const split = row.split(": ");
       return {rule: split[0], password: split[1]};
     })
@@ -53,8 +50,6 @@ export default class Day2 extends Day {
       const aMatches = password[indexA] === letter;
       const bMatches = password[indexB] === letter;
       return aMatches ? !bMatches : bMatches;
-    })
-        .length;
-    return {part: 2, count, total: fileRows.length};
+    }).length;
   }
 }

@@ -64,9 +64,8 @@ export default class Day7 extends Day {
     await this.loadBagMap();
 
     const input = "shiny gold";
-    const answer = this.countBagsThatContainInputColour(input);
 
-    return {part: 1, answer};
+    return this.countBagsThatContainInputColour(input);
   }
 
   countBagsInsideInputColour = (inputColour: string): number => {
@@ -86,9 +85,8 @@ export default class Day7 extends Day {
     await this.loadBagMap();
 
     const input = "shiny gold";
-    const answer = this.countBagsInsideInputColour(input);
 
-    return {part: 2, answer};
+    return this.countBagsInsideInputColour(input);
   }
 
 }

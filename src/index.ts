@@ -91,14 +91,17 @@ class Index {
     );
 
     const solutions = await Promise.all(
-        puzzles.flatMap(a => [a.part1(), a.part2()])
+        puzzles.flatMap(async a => [
+          {part: 1, answer: await a.part1()},
+          {part: 2, answer: await a.part2()}
+        ])
     );
 
     solutions.map(
-        async (parts, day) => {
-          const solution = await parts
+        async (solution, day) => {
+          day++;
           console.log({
-            day: Math.floor(day / 2) + 1,
+            day,
             solution
           })
         }
@@ -111,13 +114,16 @@ class Index {
     }
 
     const day = await new Index.DAYS[dayNumber - 1]().init(example);
-
+    const solution = [];
+    if (!part || part === 1) {
+      solution.push({part: 1, answer: await day.part1()})
+    }
+    if (!part || part === 2) {
+      solution.push({part: 2, answer: await day.part2()})
+    }
     console.log({
       day: dayNumber,
-      solution: [
-        (!part || part === 1) && await day.part1(),
-        (!part || part === 2) && await day.part2()
-      ]
+      solution
     })
   }
 }

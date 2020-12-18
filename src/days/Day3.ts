@@ -35,7 +35,7 @@ export default class Day3 extends Day {
 
   part1 = async () => {
     const map = new TreeMap(this.getString());
-    return {part: 1, count: map.traverse({xDiff: 3, yDiff: 1})};
+    return map.traverse({xDiff: 3, yDiff: 1});
   }
 
   part2 = async () => {
@@ -47,7 +47,7 @@ export default class Day3 extends Day {
       {xDiff: 7, yDiff: 1},
       {xDiff: 1, yDiff: 2}
     ];
-    return {part: 2, count: slopes.map(map.traverse).reduce((a, b) => a * b)};
+    return slopes.map(map.traverse).reduce((a, b) => a * b);
   }
 
 }

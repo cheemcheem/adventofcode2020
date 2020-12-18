@@ -7,10 +7,12 @@ class DayTemplate extends Day {
 
   part1 = async () => {
 
+    return 0;
   }
 
   part2 = async () => {
 
+    return 0;
   }
 
 }
